@@ -2,8 +2,11 @@ const relogio = document.getElementById("relogio").innerHTML;
 
 var i = 0;
 
+var cont = 0;
+
 var y = 0;
 
+var parar = false;
 
 function waitforme(milisec) {
     return new Promise(resolve => {
@@ -11,9 +14,38 @@ function waitforme(milisec) {
     })
 }
 
+function reset(){
+
+    document.getElementById("relogio").innerHTML = 0+":"+0;
+
+}
+
 async function inicio(){
+
+    cont++;
     
     while (i <=60){
+
+        if ((cont>1) && (y>0)){
+            break;
+        }
+
+    
+
+        if ((i > 1) && (document.getElementById("relogio").innerHTML == 0+":"+0)){
+
+
+            y = 0;
+            i = 0;
+
+            
+            break;
+            
+
+        }
+
+
+
 
         document.getElementById("relogio").innerHTML = y+":"+i;
 
@@ -29,6 +61,7 @@ async function inicio(){
         }
 
 
+
     }
 
     
@@ -39,15 +72,7 @@ async function inicio(){
 
 }
 
-function reset(){
-    
-    var i = 0;
-    var y = 0;
 
-    document.getElementById("relogio").innerHTML = y+":"+i;
-
-
-}
 
 /*
 function waitforme(milisec) {
